@@ -61,7 +61,7 @@ I. The easiest and fully AUTOMATIC way to work with the project
 =================================================
 1. Download the file /meta-thc/bin/metafetch-v1
 
-2. Create a directory in your home, named, for example, yocto-rpi4-thc. 
+2. Create a directory in your home, named, for example, yocto-rpi4-thc-v1. 
 
 3. Execute the script with these arguments:
 
@@ -69,26 +69,26 @@ $ ./metafetch-v1 -b <BUILD_DIR> -m <METADATA_DIR>
 
 for the example this would be 
 
-$ ./metafetch-v1 -b ~/yocto-rpi4-thc/build -m ~/yocto-rpi4-thc/metadata
+$ ./metafetch-v1 -b ~/yocto-rpi4-thc-v1/build -m ~/yocto-rpi4-thc-v1/metadata
 
-The script will clone all necessary dependencies and apply changes according to your local paths in the file ~/yocto-rpi4-thc/build/conf/bblayers.conf
+The script will clone all necessary dependencies and apply changes according to your local paths in the file ~/yocto-rpi4-thc-v1/build/conf/bblayers.conf
 
 By default the script clones via http, which is slower and may experience interrupts.
 
 The script also supports the git protocol. If you have a local git configuration in ~/.gitconfig, it can fetch via the git protocol. 
 For this just add "-g" directly after the metafetch-v1 name. More is explained in the detailed pdf documentation.
 
-Next navigate to ~/yocto-rpi4-thc/metadata/poky/ and execute:
+Next navigate to ~/yocto-rpi4-thc-v1/metadata/poky/ and execute:
 $ source oe-init-build-env <BUILD_DIR>
 
 For the example this would be:
-$ source oe-init-build-env ~/yocto-rpi4-thc/build
+$ source oe-init-build-env ~/yocto-rpi4-thc-v1/build
 
 Now simply execute
 $ bitbake core-image-thc
 
 You will get a .wic file to be copied to the microSD card of your RPI board in:
-~/yocto-rpi4-thc/build/tmp/deploy/images/raspberrypi4-64/core-image-thc-raspberrypi4-64.wic
+~/yocto-rpi4-thc-v1/build/tmp/deploy/images/raspberrypi4-64/core-image-thc-raspberrypi4-64.wic
 
 Copy the file with:
 $ sudo dd if=/Path-To-File/core-image-thc-raspberrypi4-64.wic of=/dev/<xxx> status=progress
