@@ -59,24 +59,24 @@ Short instruction
 
 I. The easiest and fully AUTOMATIC way to work with the project
 =================================================
-1. Download the file /meta-thc/bin/metafetch
+1. Download the file /meta-thc/bin/metafetch-v1
 
 2. Create a directory in your home, named, for example, yocto-rpi4-thc. 
 
 3. Execute the script with these arguments:
 
-$ ./metafetch -b <BUILD_DIR> -m <METADATA_DIR>
+$ ./metafetch-v1 -b <BUILD_DIR> -m <METADATA_DIR>
 
 for the example this would be 
 
-$ ./metafetch -b ~/yocto-rpi4-thc/build -m ~/yocto-rpi4-thc/metadata
+$ ./metafetch-v1 -b ~/yocto-rpi4-thc/build -m ~/yocto-rpi4-thc/metadata
 
 The script will clone all necessary dependencies and apply changes according to your local paths in the file ~/yocto-rpi4-thc/build/conf/bblayers.conf
 
 By default the script clones via http, which is slower and may experience interrupts.
 
 The script also supports the git protocol. If you have a local git configuration in ~/.gitconfig, it can fetch via the git protocol. 
-For this just add "-g" directly after the metafetch name. More is explained in the detailed pdf documentation.
+For this just add "-g" directly after the metafetch-v1 name. More is explained in the detailed pdf documentation.
 
 Next navigate to ~/yocto-rpi4-thc/metadata/poky/ and execute:
 $ source oe-init-build-env <BUILD_DIR>
