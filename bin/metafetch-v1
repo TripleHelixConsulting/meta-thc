@@ -1,5 +1,5 @@
 #!/bin/sh
-# name:    metafetch
+# name:    metafetch-v1
 # purpose: clone rpi metadata
 # code:    atanasr at triplehelix-consulting dot com
 
