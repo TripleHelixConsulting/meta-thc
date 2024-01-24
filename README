@@ -1,5 +1,11 @@
-This README file contains information on the contents of the meta-thc layer.
-Please see https://kaloyanski.github.io/meta-thc for details.
+This is the first stable version of https://github.com/kaloyanski/meta-thc.
+I freeze it to have a stable version, up-to-date with the attached Detailed Guide Document, titled:
+"Manual for Custom Yocto-based minimal Linux Image for Raspberry Pi.pdf"
+
+The original repository continues to be actively developed (as of Jan 2024).
+
+The documentation for the original repository is located at https://kaloyanski.github.io/meta-thc.
+Its updates will happen when Kaloyanski has time to do it.
 
 Dependencies
 ============
@@ -14,30 +20,21 @@ Dependencies
   branch: kirkstone  
 
 
-Maintainer: Kaloyan Krastev <kaloyan at triplehelix-consulting dot com>
+Maintainer: Atanas Rusev <atanasr at triplehelix-consulting dot com>
 
-Table of Contents
+Short instruction
 =================
-
-  I. Adding the meta-thc layer to your build
- II. Build
-III. Message
-
 
 I. Adding the meta-thc layer to your build
 =================================================
-
 Run 'bitbake-layers add-layer meta-thc'.
 
 II. Build
 =================================================
-
 Run 'bitbake core-image-thc'.
 
 III. Message
 =================================================
+If you are interested in this project, we will be glad to know and potentially collaborate. In this case, please contact <office at triplehelix-consulting dot com>
 
-If you are interested in this project, we will be glad to know and potentially collaborate. In this case, please contact <office@triplehelix-consulting.com>.
-
-See https://kaloyanski.github.io/meta-thc for details.
-
+You can also 
