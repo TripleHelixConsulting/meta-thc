@@ -4,38 +4,76 @@ The main target is RPI4, but with minimal edits it shall support any Yocto-suppo
 
 The project is up-to-date with the Detailed Manual pdf document, titled:
 "Manual for Custom Yocto-based minimal Linux Image for Raspberry Pi.pdf"
+
+This document and the project have several purposes:
+
+1.) Describing how our demo project works, so that you can use it for your needs - from the 
+build to the final usage on the RPI4B (Raspberry PI 4B). If you like it, we will be happy 
+to get a star on GitHub :). You can also use the project for most RPI boards before 4B! 
+Model 5 is not yet supported by Yocto. The project can also be built for QEMU, for which
+you don’t need HW. 
+
+2.) It is also a primer for anyone willing to step into Yocto to make his own build, for 
+ANY of the already supported by Yocto HW platforms.
+
+3.) In addition, it presents how this can be done on Manjaro, as it is not an officially 
+Yocto-supported host distribution. With a few simple installations we can build Yocto 
+projects flawlessly on Manjaro. We want to contribute by adding one more distribution to 
+those which are officially approved.
+
+4.) As a next point, it shows what standard SW we have integrated in our image, so that 
+you know for what you can use our image. 
+5.) The project also presents how one can integrate a GUI application. In our case it is an 
+IMGUI demo, based on OpenGL with GLFW2 and the X11 environment.
+6.) Finally it briefly mentions Work orders / Project development for clients, Partnerships, 
+Change requests, contributions, and fixes.
+
+Our image also includes a set of BusyBox GNU tools, SSH connection, HDMI setup, and WiFi 
+connection script (which saves its values between reboots), which are all described.
+
 The document contains many sections, some of which are:
+1. Non-tech Introduction _________________________________________________________________4
+2. Yocto in 5 minutes from a technical perspective _______________________________________4
+3. What do you need on Manjaro to run a Yocto build ______________________________________7
+4. The RPI 4B Platform and the Display ___________________________________________________7
+5. Yocto and Raspberry PI ________________________________________________________________8
+7. Yocto versions and information, how to know what kernel version do we build from Poky _9
+8. The BitBake build steps _______________________________________________________________10
+9. Fetching the project and building it yourself - super easy, with only a few commands __12
+10. Our project structure and bitbake basics _____________________________________________14
 
-2. Yocto in 5 minutes from a technical perspective___________________________________________________4
-3. What do you need on Manjaro to run a Yocto build________________________________________________7
-4. The RPI 4B Platform and the Display___________________________________________________________7
-5. Yocto and Raspberry PI_____________________________________________________________________8
-7. Yocto versions and information, how to know what kernel version do we build from Poky__________________9
-8. The BitBake build steps_____________________________________________________________________10
-9. Fetching the project and building it yourself - super easy, with only a few commands_____________________12
-10. Our project structure and bitbake basics_______________________________________________________14
+11. Starting the board ___________________________________________________________________21
+Using halt and reboot ____________________________________________________________________22
+Connecting via SSH _______________________________________________________________________22
 
-11. Starting the board________________________________________________________________________21
-Using halt and reboot_____________________________________________________________________22
-Connecting via SSH______________________________________________________________________22
-
-12. Networking and starting the WiFi____________________________________________________________23
-13. The SW provided by our image______________________________________________________________23
+12. Networking and starting the WiFi _____________________________________________________23
+13. The SW provided by our image _________________________________________________________23
 BusyBox, Shell, Init system, Libraries, X11, Avahi, Dropbear SSH, wpa_supplicant,...
-Looking for other modules, present or not.__________________________________________________26
+Looking for other modules, present or not. _______________________________________________26
 Logs, Kernel, Editor, Clock
 
-16. Processor, CPU Speed, and HW specification_______________________________________________26
-17. Adding a module______________________________________________________________________27
-14. IMGUI DEMO___________________________________________________________________________27
-15. Changing for different HW__________________________________________________________________28
+16. Processor, CPU Speed, and HW specification ___________________________________________26
+17. Adding a module ______________________________________________________________________27
+14. IMGUI DEMO ___________________________________________________________________________27
+15. Changing for different HW ____________________________________________________________28
 
-16. Important Yocto Links_____________________________________________________________________28
+16. Important Yocto Links ________________________________________________________________28
 
-17. License, development, and contribution_______________________________________________________29
-18. Change Requests, Bugs, Contributions, New Features___________________________________________30
-19. Projects and work orders, partnerships________________________________________________________30
+17. License, development, and contribution _______________________________________________29
+18. Change Requests, Bugs, Contributions, New Features ___________________________________30
+19. Projects and work orders, partnerships _______________________________________________30
 20. Copyright notice
+
+Important prerequisite - it is expected, that you have at least some basic Linux knowledge 
+and/or experience (except for the Introduction). If you have none or would like to advance, 
+I have written a book, called the Manjaro Linux User Guide, a top up-to-date book to 
+learn Linux in 2024! 
+It covers all general topics from the installation and graphical environments, through 
+available SW, a great Terminal primer, package managers, encryption, Filesystem basics, 
+Storage and backup, Networking and Sharing, Firewalls, Systemctl, Services, Shell scripts 
+and automation, and others.
+12 of its sub-sections are shared for free as articles! 
+Take a look here: https://triplehelix-consulting.com/book/.
 
 Dependencies
 ============
@@ -71,12 +109,15 @@ for the example this would be
 
 $ ./metafetch-v1 -b ~/yocto-rpi4-thc-v1/build -m ~/yocto-rpi4-thc-v1/metadata
 
-The script will clone all necessary dependencies and apply changes according to your local paths in the file ~/yocto-rpi4-thc-v1/build/conf/bblayers.conf
+The script will clone all necessary dependencies and apply changes according to your 
+local paths in the file ~/yocto-rpi4-thc-v1/build/conf/bblayers.conf
 
 By default the script clones via http, which is slower and may experience interrupts.
 
-The script also supports the git protocol. If you have a local git configuration in ~/.gitconfig, it can fetch via the git protocol. 
-For this just add "-g" directly after the metafetch-v1 name. More is explained in the detailed pdf documentation.
+The script also supports the git protocol. If you have a local git configuration in ~/.gitconfig, 
+it can fetch via the git protocol. 
+For this just add "-g" directly after the metafetch-v1 name. More is explained in the 
+detailed pdf documentation.
 
 Next navigate to ~/yocto-rpi4-thc-v1/metadata/poky/ and execute:
 $ source oe-init-build-env <BUILD_DIR>
@@ -116,6 +157,7 @@ Its updates will happen when Kaloyanski has time to do it.
 
 V. Message
 =================================================
-If you are interested in this project, we will be glad to know and potentially collaborate. In this case, please contact <office at triplehelix-consulting dot com>
+If you are interested in this project, we will be glad to know and potentially collaborate. 
+In this case, please contact <office at triplehelix-consulting dot com>
 
 You can also write via https://triplehelix-consulting.com/contact/
