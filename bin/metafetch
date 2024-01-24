@@ -1,7 +1,7 @@
 #!/bin/sh
 # name:    metafetch
 # purpose: clone rpi metadata
-# code:    kaloyan@triplehelix-consulting.com
+# code:    atanasr at triplehelix-consulting dot com
 
 FETCHER=https://github.com/
 GITFETCHER=git@github.com:
@@ -74,8 +74,8 @@ REPO=(    # associative git repository array
     [yoctoproject/poky.git]=$METADIR/poky
     [openembedded/meta-openembedded.git]=$METADIR/oe
     [agherzan/meta-raspberrypi]=$METADIR/rpi/meta-raspberrypi
-    [kaloyanski/meta-thc.git]=$METADIR/thc/meta-thc
-    [TripleHelixConsulting/rpiconf.git]=$BUILDIR/conf
+    [TripleHelixConsulting/meta-thc-v1.git]=$METADIR/thc/meta-thc
+    [AtanasRusevTH/rpiconf-v1.git]=$BUILDIR/conf
 )
 
 [ "$DRYRUN" ] || confirm
