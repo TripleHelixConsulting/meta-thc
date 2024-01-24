@@ -1,11 +1,41 @@
-This is the first stable version of https://github.com/kaloyanski/meta-thc.
-I freeze it to have a stable version, up-to-date with the attached Detailed Guide Document, titled:
+This is a complete EXAMPLE PROJECT WITH GUIDE for creating a YOCTO build for RASPBERRY PI (RPI).
+
+The main target is RPI4, but with minimal edits it shall support any Yocto-supported RPI with HDMI.
+
+The project is up-to-date with the Detailed Manual pdf document, titled:
 "Manual for Custom Yocto-based minimal Linux Image for Raspberry Pi.pdf"
+The document contains many sections, some of which are:
 
-The original repository continues to be actively developed (as of Jan 2024).
+2. Yocto in 5 minutes from a technical perspective___________________________________________________4
+3. What do you need on Manjaro to run a Yocto build________________________________________________7
+4. The RPI 4B Platform and the Display___________________________________________________________7
+5. Yocto and Raspberry PI_____________________________________________________________________8
+7. Yocto versions and information, how to know what kernel version do we build from Poky__________________9
+8. The BitBake build steps_____________________________________________________________________10
+9. Fetching the project and building it yourself - super easy, with only a few commands_____________________12
+10. Our project structure and bitbake basics_______________________________________________________14
 
-The documentation for the original repository is located at https://kaloyanski.github.io/meta-thc.
-Its updates will happen when Kaloyanski has time to do it.
+11. Starting the board________________________________________________________________________21
+Using halt and reboot_____________________________________________________________________22
+Connecting via SSH______________________________________________________________________22
+
+12. Networking and starting the WiFi____________________________________________________________23
+13. The SW provided by our image______________________________________________________________23
+BusyBox, Shell, Init system, Libraries, X11, Avahi, Dropbear SSH, wpa_supplicant,...
+Looking for other modules, present or not.__________________________________________________26
+Logs, Kernel, Editor, Clock
+
+16. Processor, CPU Speed, and HW specification_______________________________________________26
+17. Adding a module______________________________________________________________________27
+14. IMGUI DEMO___________________________________________________________________________27
+15. Changing for different HW__________________________________________________________________28
+
+16. Important Yocto Links_____________________________________________________________________28
+
+17. License, development, and contribution_______________________________________________________29
+18. Change Requests, Bugs, Contributions, New Features___________________________________________30
+19. Projects and work orders, partnerships________________________________________________________30
+20. Copyright notice
 
 Dependencies
 ============
@@ -19,22 +49,73 @@ Dependencies
   URI: git@github.com:agherzan/meta-raspberrypi
   branch: kirkstone  
 
+  URI: git@github.com:AtanasRusevTH/rpiconf-v1
+  branch: kirkstone  
 
 Maintainer: Atanas Rusev <atanasr at triplehelix-consulting dot com>
 
 Short instruction
 =================
 
-I. Adding the meta-thc layer to your build
+I. The easiest and fully AUTOMATIC way to work with the project
+=================================================
+1. Download the file /meta-thc/bin/metafetch
+
+2. Create a directory in your home, named, for example, yocto-rpi4-thc. 
+
+3. Execute the script with these arguments:
+
+$ ./metafetch -b <BUILD_DIR> -m <METADATA_DIR>
+
+for the example this would be 
+
+$ ./metafetch -b ~/yocto-rpi4-thc/build -m ~/yocto-rpi4-thc/metadata
+
+The script will clone all necessary dependencies and apply changes according to your local paths in the file ~/yocto-rpi4-thc/build/conf/bblayers.conf
+
+By default the script clones via http, which is slower and may experience interrupts.
+
+The script also supports the git protocol. If you have a local git configuration in ~/.gitconfig, it can fetch via the git protocol. 
+For this just add "-g" directly after the metafetch name. More is explained in the detailed pdf documentation.
+
+Next navigate to ~/yocto-rpi4-thc/metadata/poky/ and execute:
+$ source oe-init-build-env <BUILD_DIR>
+
+For the example this would be:
+$ source oe-init-build-env ~/yocto-rpi4-thc/build
+
+Now simply execute
+$ bitbake core-image-thc
+
+You will get a .wic file to be copied to the microSD card of your RPI board in:
+~/yocto-rpi4-thc/build/tmp/deploy/images/raspberrypi4-64/core-image-thc-raspberrypi4-64.wic
+
+Copy the file with:
+$ sudo dd if=/Path-To-File/core-image-thc-raspberrypi4-64.wic of=/dev/<xxx> status=progress
+
+Full details are available in the the Manual pdf.
+
+=================================================
+Apart from this:
+=================================================
+
+II. Adding the meta-thc layer to your build
 =================================================
 Run 'bitbake-layers add-layer meta-thc'.
 
-II. Build
+III. Build
 =================================================
 Run 'bitbake core-image-thc'.
 
-III. Message
+IV. Origin 
+=================================================
+This is the first stable version of https://github.com/kaloyanski/meta-thc.
+I freeze it as the original repository continues to be actively developed (as of Jan 2024).
+The documentation for the original repository is located at https://kaloyanski.github.io/meta-thc.
+Its updates will happen when Kaloyanski has time to do it.
+
+V. Message
 =================================================
 If you are interested in this project, we will be glad to know and potentially collaborate. In this case, please contact <office at triplehelix-consulting dot com>
 
-You can also 
+You can also write via https://triplehelix-consulting.com/contact/
